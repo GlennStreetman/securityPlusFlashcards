@@ -32,7 +32,10 @@ function checkProgress(reps: repTrackingObject, phase: number, setPhase: Functio
         const correctPercent = (el.correct / el.attempts) * 100
         if (correctPercent <= 85) pass = false
     })
-    if (pass && phase < maxPhase) setPhase(phase + 1)
+    if (pass && phase < maxPhase) {
+        setPhase(phase + 1)
+        window.localStorage.setItem('phase', `${phase + 1}`)
+    }
     return pass
 }
 

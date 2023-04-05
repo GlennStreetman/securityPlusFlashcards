@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { useFlashCardProgress, appContext } from '../hooks/AppContext'
 import useCheckReps from '../hooks/useCheckReps'
+import Stack from '@mui/material/Stack';
+import { Typography } from '@mui/material';
 
 interface progress {
   correct: number
@@ -26,15 +28,24 @@ export default function FlashCards() {
   useCheckReps(c.reps, c.phaseList, () => routeChange('/progress'))
 
   if (c?.phaseList !== (null || undefined) && c.phase > 0) {
-    return (<FlashCardController
-      phase={c.phase}
-      phaseList={c.phaseList}
-      reps={c.reps}
-      setReps={c.setReps}
-    />)
+    return (
+      <Stack spacing={3}>
+        <Typography variant='h6'>
+          Comptia Security+ sy0-601  Ports and Protocols Flashcards
+        </Typography>
+        <FlashCardController
+          phase={c.phase}
+          phaseList={c.phaseList}
+          reps={c.reps}
+          setReps={c.setReps}
+        />
+        <Button onClick={() => routeChange(`/`)}>
+          Return to Welcome Page
+        </Button>
+      </Stack>)
   } else {
     return (
-      <Button onClick={() => routeChange(`/Welcome`)}>
+      <Button onClick={() => routeChange(`/`)}>
         Return to Welcome Page
       </Button>
     )

@@ -9,7 +9,7 @@ import MapPortButtonsAnswer from './MapPortButtonsAnswer'
 import Layer4AnswerButtons from './Layer4AnswerButtons';
 import Layer4AnswerButtonsAnswer from './Layer4AnswerButtonAnswer';
 import { checkAnswer } from "../functions/checkAnswer"
-import { repTrackingObject } from '../App'
+import { repTrackingObject } from '../routes/flashCards'
 import { returnNewTrackingObj } from '../functions/returnNewTrackingObj';
 
 interface props {

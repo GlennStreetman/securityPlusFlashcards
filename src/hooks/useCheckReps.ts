@@ -1,24 +1,22 @@
 import {useEffect} from 'react'
-import {protocol, layer7Protocols} from '../data/protocol'
-import { repTrackingObject } from '../App'
+import { repTrackingObject } from '../routes/flashCards'
+import {protocol} from '../data/protocol'
 
-export function checkReps(
-    setPage: Function, 
+export default function useCheckReps(
     reps: repTrackingObject, 
-    phase: number,
-    length: number[] | undefined 
+    length: protocol[], 
+    navigate: Function
     ){
     //if reps.
     useEffect(()=>{
-        if (length !== undefined){
+        if (length !== undefined && reps?.[1]?.attempts > 13){
             
             let totalReps = Object.values(reps).reduce((prev, curr)=>{
                 prev = prev + curr.attempts
                 return prev
             }, 0) 
             console.log('checking reps', totalReps, length.length * 2)
-            if (totalReps >= length.length * 2) setPage('review')
-
-        }
+            if (totalReps >= length.length * 2) navigate()
+        } 
     }, [reps])
 }

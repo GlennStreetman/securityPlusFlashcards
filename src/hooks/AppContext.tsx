@@ -42,7 +42,7 @@ export default function AppState({ children }) {
     const [phaseList, setPhaseList] = useState([]) // list of protocols included in this phase of test.
     const [reps, setReps] = useState<repTrackingObject>({}) //target count before check. Use Custom hook to check.
 
-    useSetup(setPhase, setReps) //run once on load. Setup local storage
+    useSetup(setPhase) //run once on load. Setup local storage
     usePhase(phase, setPhaseList) // on phase change, generate new random list of flashcards.
 
     return (

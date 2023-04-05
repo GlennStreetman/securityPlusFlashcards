@@ -15,12 +15,15 @@ function numbersToString(el: number[]) {
 }
 
 function mapProtocols() {
-    const rows = layer7Protocols.map((el) => <TableRow>
-        <TableCell align="center">{el.phase}</TableCell>
-        <TableCell align="center">{el.l7}</TableCell>
-        <TableCell align="center">{numbersToString(el.portList).slice(0, -2)}</TableCell>
-        <TableCell align="center">{el.l4}</TableCell>
-    </TableRow>)
+    const rows = layer7Protocols.map((el) => {
+        const bgColor = el.phase % 2 === 0 ? '#f1f5f9' : ''
+        return (<TableRow sx={{ backgroundColor: bgColor }}>
+            <TableCell align="center">{el.phase}</TableCell>
+            <TableCell align="center">{el.l7}</TableCell>
+            <TableCell align="center">{numbersToString(el.portList).slice(0, -2)}</TableCell>
+            <TableCell align="center">{el.l4}</TableCell>
+        </TableRow>)
+    })
     return rows
 }
 
@@ -29,11 +32,11 @@ function PortsProtocolsTable() {
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Phase</TableCell>
-                        <TableCell align="center">Layer 7</TableCell>
-                        <TableCell align="center">Port List</TableCell>
-                        <TableCell align="center">Layer 4</TableCell>
+                    <TableRow >
+                        <TableCell sx={{ fontWeight: 700 }} align="center">Phase</TableCell>
+                        <TableCell sx={{ fontWeight: 700 }} align="center">Layer 7</TableCell>
+                        <TableCell sx={{ fontWeight: 700 }} align="center">Port List</TableCell>
+                        <TableCell sx={{ fontWeight: 700 }} align="center">Layer 4</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
 import { Card } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
+import PortsProtocolsTable from '../components/PortsProtocolsTable';
 
 export default function Welcome() {
 
@@ -37,7 +38,9 @@ export default function Welcome() {
         <Button onClick={routeChange}>
           Get Started
         </Button>
-
+        <Card>
+          <PortsProtocolsTable />
+        </Card>
       </Stack>
     </div>
   );

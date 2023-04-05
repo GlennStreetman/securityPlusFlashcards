@@ -17,7 +17,7 @@ function numbersToString(el: number[]) {
 function mapProtocols() {
     const rows = layer7Protocols.map((el) => {
         const bgColor = el.phase % 2 === 0 ? '#f1f5f9' : ''
-        return (<TableRow sx={{ backgroundColor: bgColor }}>
+        return (<TableRow key={`${el.l7}-table`} sx={{ backgroundColor: bgColor }}>
             <TableCell align="center">{el.phase}</TableCell>
             <TableCell align="center">{el.l7}</TableCell>
             <TableCell align="center">{numbersToString(el.portList).slice(0, -2)}</TableCell>

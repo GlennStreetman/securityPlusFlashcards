@@ -33,7 +33,7 @@ export const layer7Protocols:protocol[] = [
     {phase: 4, l7: "IMAP4 /w SSL/TLS" , portList: [993], l4: "TCP"} ,
     {phase: 4, l7: "Pop3 /w SSL/TLS" , portList: [995], l4: "TCP"} ,
     {phase: 4, l7: "MsSQL" , portList: [1433], l4: "TCP"} ,
-    {phase: 4, l7: "Radius" , portList: [1645, 1646], l4: "UDP"} ,
+    {phase: 4, l7: "Radius-TACACS" , portList: [1645, 1646], l4: "UDP"} ,
     {phase: 4, l7: "l2TP" , portList: [1701], l4: "UDP"} ,
     {phase: 5, l7: "PPTP" , portList: [1723], l4: "TCP/UDP"} ,
     {phase: 5, l7: "Radius" , portList: [1812,1813], l4: "UDP"} ,

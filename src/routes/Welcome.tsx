@@ -1,12 +1,17 @@
+
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
 import { Card } from '@mui/material';
-import CardContent from '@mui/material/CardContent';
 import PortsProtocolsTable from '../components/PortsProtocolsTable';
+import CardSelection from '../components/CardSelection';
+
+import { useFlashCardProgress, appContext } from '../hooks/AppContext'
 
 export default function Welcome() {
+
+  const c: appContext = useFlashCardProgress()
 
   let navigate = useNavigate();
   const routeChange = () => {
@@ -38,6 +43,7 @@ export default function Welcome() {
         <Button onClick={routeChange}>
           Get Started
         </Button>
+        {c.phase ? <CardSelection phase={c.phase} setPhase={c.setPhase} /> : <></>}
         <Card>
           <PortsProtocolsTable />
         </Card>

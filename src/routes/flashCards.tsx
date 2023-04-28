@@ -1,10 +1,11 @@
+
 import FlashCardController from '../components/FlashCardController'
-import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { useFlashCardProgress, appContext } from '../hooks/AppContext'
 import useCheckReps from '../hooks/useCheckReps'
 import Stack from '@mui/material/Stack';
 import { Typography } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 interface progress {
   correct: number
@@ -27,7 +28,7 @@ export default function FlashCards() {
   //if reps are equal to desired count, redirect to progress report. If all checks pass, update phase.
   useCheckReps(c.reps, c.phaseList, () => routeChange('/progress'))
 
-  if (c?.phaseList !== (null || undefined) && c.phase > 0) {
+  if (c?.phaseList !== (null || undefined)) {
     return (
       <Stack spacing={3}>
         <Typography variant='h6'>

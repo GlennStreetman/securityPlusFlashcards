@@ -17,7 +17,7 @@ import { Typography } from '@mui/material';
 interface props {
     reps: repTrackingObject
     setReps: Function
-    phase: number
+    phase: number[]
     setPhase: Function
 }
 
@@ -26,16 +26,16 @@ const maxPhase = layer7Protocols.reduce((prev, curr) => {
     return prev
 }, 0)
 
-function checkProgress(reps: repTrackingObject, phase: number, setPhase: Function) {
+function checkProgress(reps: repTrackingObject) {
     let pass = true
     Object.values(reps).forEach((el) => {
         const correctPercent = (el.correct / el.attempts) * 100
         if (correctPercent <= 85) pass = false
     })
-    if (pass && phase < maxPhase) {
-        setPhase(phase + 1)
-        window.localStorage.setItem('phase', `${phase + 1}`)
-    }
+    // if (pass && phase < maxPhase) {
+    //     setPhase(phase + 1)
+    //     window.localStorage.setItem('phase', `${phase + 1}`)
+    // }
     return pass
 }
 
@@ -50,7 +50,7 @@ function Review(props: props) {
     }
 
     useEffect(() => {
-        const pass = checkProgress(props.reps, props.phase, props.setPhase)
+        const pass = checkProgress(props.reps)
         setPass(pass)
 
     }, [])
@@ -90,7 +90,7 @@ function Review(props: props) {
                     {pass ?
                         "Good job, all phases complete with an 85% grade" :
                         "Uh oh, progress on the current groups of cards still needs to be made. Lets try again"}
-                    {pass && props.phase >= maxPhase ?
+                    {pass ?
                         "Congrats, all phases complete. You are ready" :
                         ""
                     }

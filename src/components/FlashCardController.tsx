@@ -8,7 +8,7 @@ import { Card } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 
 interface props {
-    phase: number
+    phase: number[]
     phaseList: protocol[];
     reps: repTrackingObject;
     setReps: Function;
@@ -20,7 +20,8 @@ function FlashCardController(props: props) {
 
     const reviewProtocols = props.phaseList.reduce((prev, curr) => {
         return `${prev}${curr.l7},  `
-    }, '').slice(0, -4)
+    }, '')
+        .slice(0, -4)
 
     return (
         <div>

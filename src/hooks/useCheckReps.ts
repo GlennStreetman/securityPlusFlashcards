@@ -7,7 +7,7 @@ export default function useCheckReps(
     length: protocol[], 
     navigate: Function
     ){
-    //if reps.
+    //Navigate to check reps page if all cards have been reviewed twice.
     useEffect(()=>{
         if (length !== undefined && reps?.[1]?.attempts > 13){
             

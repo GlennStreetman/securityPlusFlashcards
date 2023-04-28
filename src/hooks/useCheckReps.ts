@@ -9,7 +9,7 @@ export default function useCheckReps(
     ){
     //Navigate to check reps page if all cards have been reviewed twice.
     useEffect(()=>{
-        if (length !== undefined && reps?.[1]?.attempts > 13){
+        if (length !== undefined){
             
             let totalReps = Object.values(reps).reduce((prev, curr)=>{
                 prev = prev + curr.attempts

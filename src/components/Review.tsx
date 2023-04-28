@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { repTrackingObject } from '../hooks/AppContext'
 import { layer7Protocols } from '../data/protocol'
 
+import { useFlashCardProgress, appContext } from '../hooks/AppContext'
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,6 +15,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
+
+import CardSelection from '../components/CardSelection';
 
 interface props {
     reps: repTrackingObject
@@ -40,6 +44,8 @@ function checkProgress(reps: repTrackingObject) {
 }
 
 function Review(props: props) {
+
+    const c: appContext = useFlashCardProgress()
 
     const [pass, setPass] = useState(false)
 
@@ -87,13 +93,16 @@ function Review(props: props) {
                     </Table>
                 </TableContainer>
                 <Typography>
+                    <br />
                     {pass ?
                         "Good job, all phases complete with an 85% grade" :
                         "Uh oh, progress on the current groups of cards still needs to be made. Lets try again"}
                     {pass ?
-                        "Congrats, all phases complete. You are ready" :
+                        "Consider Adding additional cards to make your review more challenging" :
                         ""
                     }
+
+                    {c.phase ? <CardSelection phase={c.phase} setPhase={c.setPhase} /> : <></>}
                 </Typography>
             </div>
             <br />

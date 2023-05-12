@@ -46,7 +46,6 @@ function CardCheckBox(props: checkBoxCards) {
 }
 
 function CardSelection(props: cardProps) {
-    console.log('-----Phase----------', props.phase, props.phase.includes(1))
     return (
         <div>
             <Typography>Review Phase:&nbsp;&nbsp;

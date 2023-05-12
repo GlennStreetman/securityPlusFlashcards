@@ -19,9 +19,32 @@ export default function Welcome() {
     navigate(path);
   }
 
+  async function testAPI() {
+    let body = {
+      email: 'test3@gmail.com',
+      github: 'test3@github.com',
+    }
+    let bodyparse = JSON.stringify(body)
+    const response = await fetch('https://pya66lzf6f2vwkbv7uyvfyfc4i0rjolv.lambda-url.us-east-1.on.aws/', {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      headers: {
+        "Content-Type": "application/json",
+        // "Acess-Control-Allow-Origin": "*"
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: bodyparse, // body data type must match "Content-Type" header
+    });
+    const msg = await response.json()
+    console.log("msg", msg)
+  }
+
   return (
     <div className="App">
       <Stack>
+        <Button onClick={testAPI}>TEST CLICK</Button>
         <Typography variant="h5">
           Comptia Security+ sy0-601  Ports and Protocols Flashcards
         </Typography>
